@@ -31,3 +31,13 @@ jobs:
         with:
           name: PDF
           path: cv.pdf
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: github.ref == 'refs/heads/main'
+        with:
+          tag_name: latest
+          files: cv.pdf
+          body: "Latest version of CV compiled from ${{ github.sha }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
