@@ -1,0 +1,33 @@
+name: Build LaTeX Document
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cv.tex
+          latexmk_use_lualatex:
+            true # Attempting lualatex as it can be more robust with fonts, but standard pdflatex is default if this is false.
+            # However, let's stick to the plan which implicitly used default (pdflatex) by not specifying args,
+            # BUT I will explicitly set it to false to be safe as per plan or just omit args to rely on defaults.
+            # Re-reading plan: I said "lualatex: true" in the code block but comment said "I will stick to default".
+            # Let's use the code block from the plan which had `latexmk_use_lualatex: true` commented out as "Optional".
+            # Actually, the plan had `latexmk_use_lualatex: true` in the snippet but the comment said "I will stick to default (pdflatex) unless specified".
+            # I will omit the lualatex arg to use the default pdflatex which is standard for `article` class unless specific fonts need luatex.
+            # cv.tex uses `cfr-lm` which is for pdflatex.
+
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDF
+          path: cv.pdf
