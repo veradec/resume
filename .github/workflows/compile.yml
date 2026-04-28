@@ -66,4 +66,74 @@ jobs:
         generate_release_notes: false
         prerelease: false
       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}name: Daily LaTeX Compilation
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  compile-latex:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Setup LaTeX
+      uses: xu-cheng/texlive-action@v2
+      with:
+        scheme: full
+    
+    - name: Compile LaTeX to PDF
+      run: |
+        # Find main .tex file (excluding .aux, .log, etc.)
+        MAIN_TEX=$(find . -maxdepth 1 -name "*.tex" -type f ! -name "*.aux.tex" ! -name "*.log.tex" | head -1)
+        
+        if [ -z "$MAIN_TEX" ]; then
+          echo "No .tex file found in root directory"
+          exit 1
+        fi
+        
+        echo "Compiling: $MAIN_TEX"
+        
+        # Get the directory and basename
+        TEX_DIR=$(dirname "$MAIN_TEX")
+        TEX_BASENAME=$(basename "$MAIN_TEX" .tex)
+        
+        # Compile twice to resolve references
+        cd "$TEX_DIR"
+        pdflatex -interaction=nonstopmode -halt-on-error "$TEX_BASENAME.tex"
+        pdflatex -interaction=nonstopmode -halt-on-error "$TEX_BASENAME.tex"
+        
+        # Verify PDF was created
+        if [ -f "$TEX_BASENAME.pdf" ]; then
+          echo "✅ PDF generated: $TEX_BASENAME.pdf"
+          # Move PDF to root for artifact collection
+          mv "$TEX_BASENAME.pdf" "$GITHUB_WORKSPACE/"
+        else
+          echo "❌ PDF generation failed"
+          exit 1
+        fi
+    
+    - name: Upload PDF as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiled-pdf
+        path: "*.pdf"
+        retention-days: 30
+    
+    - name: Create Release
+      if: success()
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: daily-build-${{ github.run_number }}
+        name: Daily Build ${{ github.run_number }}
+        files: "*.pdf"
+        generate_release_notes: false
+        prerelease: false
+      env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
