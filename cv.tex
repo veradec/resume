@@ -1,0 +1,385 @@
+%-------------------------
+% Resume in Latex
+% Author : Puneet Gautam, puneet.gautam0206@gmail.com, punitrajgautam@uiit.ac.in
+% License : MIT
+%MIT License
+
+%Copyright (c) 2023 Puneet Gautam
+
+%Permission is hereby granted, free of charge, to any person obtaining a copy
+%of this software and associated documentation files (the "Software"), to deal
+%in the Software without restriction, including without limitation the rights
+%to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%copies of the Software, and to permit persons to whom the Software is
+%furnished to do so, subject to the following conditions:
+
+%The above copyright notice and this permission notice shall be included in all
+%copies or substantial portions of the Software.
+
+%THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+%SOFTWARE.
+%------------------------
+
+%---- Required Packages and Functions ----
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=0.6cm, top=0.5cm, right=0.6cm, bottom=0.5cm}
+% Adjust margins
+%\addtolength{\oddsidemargin}{-0.5in}
+%\addtolength{\evensidemargin}{-0.5in}
+%\addtolength{\textwidth}{1in}
+\usepackage[most]{tcolorbox}
+\tcbset{
+	frame code={}
+	center title,
+	left=0pt,
+	right=0pt,
+	top=0pt,
+	bottom=0pt,
+	colback=gray!20,
+	colframe=white,
+	width=\dimexpr\textwidth\relax,
+	enlarge left by=-2mm,
+	boxsep=4pt,
+	arc=0pt,outer arc=0pt,
+}
+
+\urlstyle{same}
+
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{:\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1},\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+% \renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=0mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{justify}\begin{itemize}[leftmargin=3ex, rightmargin=2ex, noitemsep,labelsep=1.2mm,itemsep=0mm]\small}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\end{justify}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+%---- End of Packages and Functions ------
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%
+%%%%%% DEFINE ELEMENTS HERE %%%%%%%
+\newcommand{\name}{Venkata Rao Dechiraju} % Your Name
+\newcommand{\course}{Bachelors of Technology} % Your Course
+\newcommand{\roll}{RA2311026011122} % Your Roll No.
+\newcommand{\phone}{7382046646} % Your Phone Number
+\newcommand{\emaila}{vd9239@srmist.edu.in} %Email 1
+\newcommand{\emailb}{venkatraodechiraju@gmail.com} %Email 2
+\newcommand{\github}{veradec/} %Github
+\newcommand{\website}{https://verade.xyz} %Website
+\newcommand{\linkedin}{venkata-rao-dechiraju-aba549364} %linkedin
+
+
+
+
+\begin{document}
+\fontfamily{cmr}\selectfont
+%----------HEADING-----------------
+\parbox{2.35cm}{%
+
+\includegraphics[width=2cm,clip]{srmist-logo.png}
+
+}\parbox{\dimexpr\linewidth-2.8cm\relax}{
+\begin{tabularx}{\linewidth}{L r}
+  \textbf{\LARGE \name} & +91-\phone\\
+  
+  \course &  \href{mailto:\emailb}{\emailb}\\
+   {in Computer Science and Engineering in ML\&AI} &  \href{https://github.com/\github}{GitHub} \\ %$|$ \href{\website}{Website}\\
+  {SRM Institute of Technology, Kattankulathur, Chennai} & \href{https://www.linkedin.com/in/\linkedin/}{LinkedIn}
+\end{tabularx}
+}
+
+\vspace{-2mm}
+%-------------SUMMARY-----------------
+\iffalse
+\section{\textbf{Summary}}
+This CV is automatically generated and deployed using the \href{https://github.com/kryptoniteX/autocvmkr}{autoCVmkr} template along with GitHub Actions such that a new version of the CV is compiled, published and ready for use when the cv.tex file is updated.
+\fi
+%-----------EDUCATION-----------------
+\section{\textbf{Education}}
+\setlength{\tabcolsep}{5pt} % Default value: 6pt
+% \renewcommand{\arraystretch}{1.1} % Default value: 1
+\small{\begin{tabularx}
+{\dimexpr\textwidth-2mm\relax}{|c|C|c|c|}
+  \hline
+  \textbf{Year} & \textbf{Degree/Certificate} & \textbf{Institute} \\
+  \hline
+  2023-2027 & B.Tech in Computer Science and Engineering in ML\&AI & SRMIST, Kattankulathur, Chennai\\
+ 
+  \hline
+  2023 & ISC (XII) & Loyola Public School, Guntur\\
+  \hline
+  2021 & CBSE (X) & Bharatiya Vidhya Bhavans, Guntur\\
+  \hline
+\end{tabularx}}
+\vspace{-1mm}
+
+%-----------EXPERIENCE-----------------
+\section{\textbf{Experience}}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Integrofy}{Seattle, Washington}
+      {System Administration Intern}{Aug 2024 - Sept 2024}
+      \resumeItemListStart
+        \item {About work}
+        \item {About Work}
+      \resumeItemListEnd
+    
+%    \vspace{-1mm}
+%    \resumeSubheading
+%      {Company Name}{Location}
+%      {Position}{June 2021 - July 2021}
+%      \resumeItemListStart
+%    \item {About work}
+%    \item {About Work}
+%    \resumeItemListEnd
+    
+    
+    % \item {More work done } .....
+
+    
+  
+      
+  \resumeSubHeadingListEnd
+\vspace{-6.5mm}
+%-----------PROJECTS-----------------
+\section{\textbf{Projects}}
+\resumeSubHeadingListStart
+    
+    \resumeProject
+      {fubar} %Project Name
+      {Self Directed} %Project Name, Location Name
+      {Mar 2021 - Apr 2021} %Event Dates
+      {\href{https://github.com/veradec/fubar}{\textbf{Github}}} %Website
+      \resumeItemListStart
+        \item {Developed a minimal x86 kernel from scratch in C and Assembly}
+        \item {Implemented a lightweight libc subset for kernel space, providing essential string, memory, and I/O functions without external dependencies}
+      \resumeItemListEnd
+    
+     \vspace{-1mm}
+
+     \resumeProject
+     {Circuit Simulator}
+     {EEE Department of SRMIST}
+     {Aug, 2024 - Jan, 2026}
+     {\href{https://github/veradec/}{\textbf{Github}}}
+     \resumeItemListStart
+        \item {Implemented electronic circuit simulation engine in Java}
+        \item {Optimized simulation loop for browser performance}
+    \resumeItemListEnd
+    
+     \vspace{-1mm}
+    \resumeProject
+      {noal} %Project Name
+      {Self Directed} %Project Name, Location Name
+      {Mar 2021 - Apr 2021} %Event Dates
+      {\href{https://github.com/veradec/noal}{\textbf{Github}}} %Website
+      \resumeItemListStart
+        \item {Architected a Turing-complete, self-hosted programming language from scratch in C}
+        \item {Developed a self-hosting compiler pipeline in C, demonstrating the ability to compile its own source code without external toolchain dependencies beyond a C compiler}
+      \resumeItemListEnd
+    
+     
+    
+   
+      
+\resumeSubHeadingListEnd
+\vspace{-7.5mm}
+
+\section{\textbf{Technical Skills}}
+ \resumeHeadingSkillStart
+  \resumeSubItem{Programming Languages} % Category
+    { C/C++, Assembly , Odin, Go, Rust, Java, Python, Kotlin}
+    
+    %\vspace{-0.5mm}
+    
+ \resumeSubItem{Frameworks} % Category
+    {(x86\_64, ARM) Assembly, Spring, MaterialUI, ThreeJS, Raylib, } % Skills
+
+ \resumeSubItem{Tools}
+    {Vanguard, GDB, Jenkins, Github CI/CD, Git, Podman, Docker, Kubernetes, Ansible, SQL, AWS, Azure, Redhat Linux, JUnit, CUnit}
+    
+    %\vspace{-0.5mm}
+    
+ \resumeSubItem{Operating Systems} % Category
+    {Linux (Arch btw), Android, Windows} % Skills
+    
+    %\vspace{-0.5mm}
+    
+ 
+ \resumeHeadingSkillEnd
+
+\vspace{-1.5mm}
+
+%\section{\textbf{Key courses taken}}
+%\resumeHeadingSkillStart
+% \resumeSubItem{CSE \& Maths} % Category
+%    {Introduction to C, Fundamentals of Computers, Object Oriented Paradigm in C++, Data Structures and Algorithms, Computer Organization \& Architecture, Python Programming, Operating System, Database Management System, Statistical Methods, Discrete Mathematics, Numerical Methods, Computer Networks \& Security, Software Engineering, Compiler Design, Computer Graphics \& Multimedia}
+    %\vspace{-0.5mm}
+% \resumeSubItem{Others}
+% {Basic Electronics \& Electrical Engineering, Engineering Drawing, Digital Electronics, Principle of Engineering Economics and Management, Microprocessor: Theory \& Applications}
+%  \resumeSubItem{Electrical and Electronics} % Category
+%     {Advanced Control Systems, Digital Systems, Microprocessors} % Skills
+%\resumeHeadingSkillEnd
+
+\vspace{-1mm}
+%---------------CERTIFICATIONS-------------------
+\section{\textbf{Certifications}}
+    \resumeItemListStart
+        \item {\href{https://www.credly.com/badges/3fdf8b47-0513-4984-b88d-c86578b70ad9/public_url}{\textbf{ Red Hat Certified System Administrator}}}
+        {Redhat} %Certifying Authority
+        \item {\href{https://www.credly.com/badges/27ef209c-dc83-45e6-a0af-16343bccc710/public_url}{\textbf{ Red Hat Certified Specialist in Containers}}}
+        {Red Hat} %Certifying Authority
+%        \item {\href{paste link here}{\textbf{ Certificate Name}}}
+%        {Certifying Institution Name} %Certifying Authority
+    \resumeItemListEnd
+\vspace{-4mm}
+
+%-----------TRAINING-----------------
+\iffalse
+\section{\textbf{Vocational Training}}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Institution Name}{Location}
+      {Course Name}{Start Time-EndTime}
+      \resumeItemListStart
+        \item {About course, blah blah}
+        \item {About course, blah blah}
+      \resumeItemListEnd 
+    \resumeSubHeadingListEnd
+\fi
+
+\section{\textbf{Positions of Responsibility}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+  \resumePOR{Tech} % Position
+    {NWC Club} %Club,Event
+    {2025} %Tenure Period
+  \resumePOR{Founder} % Position
+    {Innovator's Club} %Club,Event
+    {2022-23} %Tenure Period
+\resumeSubHeadingListEnd
+\vspace{-4mm}
+
+\section{\textbf{Publications}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+  \resumePOR{Multi-Stage Procedural Terrain Generation Pipeline with Hydraulic Erosion and Neural Realism Scoring}
+  {Zenodo}
+  {2026}
+  \resumePOR{A Comprehensive Meta-Analysis of Pattern-Matching Techniques}
+  {Zenodo}
+  {2025}
+  \resumePOR{Blind Rendezvous Distributed Hash Table for Anonymous Peer Discovery}
+  {Zenodo}
+  {2025}
+\resumeSubHeadingListEnd
+\vspace{-4mm}
+\section{\textbf{Miscellaneous}}
+\vspace{-0.1mm}
+\resumeSubHeadingListStart
+\resumePOR{Runner} % Award
+    {HackRush  1.0} % Event
+    {2024} %Event Year
+\vspace{-0.1mm}
+\resumePOR{Finalist} % Award
+    {HackRush 2.0} % Event
+    {2025} %Event Year
+\vspace{-0.1mm}
+\resumePOR{Video Editor (Volunteer)}
+{FOSS United}
+{2024}
+\resumeSubHeadingListEnd
+%-------------------------------------------
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}
